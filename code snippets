@@ -1,0 +1,98 @@
+#include<Servo.h>
+int servoh = 180;
+int servohLimitHigh = 180;
+int servohLimitLow = 65;
+int servov = 45; 
+int servovLimitHigh = 80;
+int servovLimitLow = 15;
+// LDR pin connections
+int ldrlt = 0; //LDR top left - BOTTOM LEFT 
+int ldrrt = 1; //LDR top right - BOTTOM RIGHT
+int ldrld = 2; //LDR down left - TOP LEFT
+int ldrrd = 3; //LDR down right - TOP RIGHT
+void setup()
+{ 
+Serial.begin(9600);
+// servo connections
+horizontal.attach(9); // name.attacht(pin);
+vertical.attach(10);
+horizontal.write(180);
+vertical.write(45);
+delay(3000);}
+void loop() 
+{
+ int lt = analogRead(ldrlt); // top left
+int rt = analogRead(ldrrt); // top right
+int ld = analogRead(ldrld); // down left
+int rd = analogRead(ldrrd); // down right
+int avt = (lt + rt) / 2; // average value top
+int avd = (ld + rd) / 2; // average value down
+int avl = (lt + ld) / 2; // average value left
+int avr = (rt + rd) / 2; // average value right
+if (avt > avd)
+{
+servov = ++servov;
+if (servov > servovLimitHigh)
+{
+servov = servovLimitHigh;
+}
+}
+else if (avt < avd)
+{
+servov= --servov;
+if (servov < servovLimitLow)
+{
+servov = servovLimitLow;
+}
+}
+vertical.write(servov);
+}
+if (avl > avr)
+{
+servoh = --servoh;
+if (servoh < servohLimitLow)
+{
+servoh = servohLimitLow;
+}
+}
+else if (avl < avr)
+{
+servoh = ++servoh;
+if (servoh > servohLimitHigh)
+{
+servoh = servohLimitHigh;
+}
+}
+else if (avl = avr)
+{
+// nothing
+}
+horizontal.write(servoh);
+}
+}
+
+Appendix two: code used to measure LDR values
+
+int ldr1=0;
+int ldr2=0;
+int ldr3=0;
+int ldr4=0;
+void setup()
+{
+Serial. begin(9600);
+Ldr1value=analog.Read(ldr1);
+Ldr2value=analog.Read(ldr2);
+Ldr3value=analog.Read(ldr3);
+Ldr4value=analog.Read(ldr4);
+}
+Void loop()
+{
+Serial.Println(ldrvalue1);
+delay(1000);
+Serial.Println(ldrvalue2);
+delay(1000);
+Serial.Println(ldrvalue3);
+delay(1000);
+Serial.Println(ldrvalue4);
+delay(1000);
+}
