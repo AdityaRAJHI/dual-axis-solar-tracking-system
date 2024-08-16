@@ -1,0 +1,568 @@
+Dual Axis Solar Tracker Using
+Arduino
+A project-II report submitted in partial fulfilment of the requirements for the award of degree of
+BACHELOR OF TECHNOLOGY
+in
+MECHANICAL ENGINEERING
+Submitted by
+VIKASH RANJAN (20102128010)
+RAJ KUMAR SINHA (20102128038)
+RAJA KUMAR (20102128032)
+SAURABH KUMAR (20102128012)
+Under the Supervision of
+Prof. Rahul Ranjan Bharti
+DEPARTMENT OF MECHANICAL ENGINEERING
+B.P. MANDAL COLLEGE OF ENGINEERING MADHEPURA - 852128
+AUGEST 2024CERTIFICATE
+This is to certify that the dissertation titled “Dual Axis Solar Tracker With IoT
+Monitoring System Using Arduino” which is being submitted by Vikash Ranjan
+(20102128010), Raj Kumar Sinha (20102128038), Raja Kumar (20102128032),
+Saurabh Kumar (20102128012) for the partial fulfillment of the requirements for the
+award of degree of Bachelor of Technology (B. Tech.) in Mechanical Department is a
+record of the student’s own work carried out at Department of Mechanical Engineering,
+B.P. Mandal College of Engineering Madhepura, Bihar, under my supervision and
+guidance. The matter embodied in this thesis has not been submitted elsewhere for the
+award of any other degree or diploma.
+Madhepura
+AUGEST 2024
+Internal Examiner
+Prof. Rahul Ranjan Bharti
+(Supervisor)
+External ExaminerDECLARATION
+We certify that
+a. The work contained in this thesis is original and has been done by myself under
+the general supervision of our supervisor.
+b. The work has not been submitted to any other Institute for degree or diploma.
+c. We have followed the Institute norms and guidelines and abide by the
+regulation as given in the Ethical Code of Conduct of the Institute.
+d. Whenever we have used materials (data, theory and text) from other sources,
+we have given due credit to them by citing them in the text of the thesis and
+giving their details in the reference section.
+Name and Signature of the Student.
+1. Vikash Ranjan (20102128010)
+2. Raj Kumar Sinha (20102128038)
+3. Raja Kumar (20102128032)
+4. Saurabh Kumar (20102128012)ACKNOWLEDGEMENT
+I feel immense pleasure and privilege to express my deep sense of gratitude,
+indebtedness and thankfulness towards my supervisor, Prof. Rahul Ranjan Bharti Assistant
+Professor, Department of Mechanical Engineering, for his invaluable guidance, constant
+supervision, continuous encouragement and support throughout this work. His
+suggestions and critical views have greatly helped me in successful completion of this work.
+I feel most obliged to my parents and all my family members for their affection and
+constant support for my education and overall well-being.
+Lastly, we express thanks to the Almighty for his generous blessings and giving me
+courage to complete the project with great satisfaction.
+Madhepura
+August 2024
+1. Vikash Ranjan (20102128010)
+2. Raj Kumar Sinha (20102128038)
+3. Raja Kumar (20102128032)
+4. Saurabh Kumar (20102128012)ABSTRACT
+This project aims to develop dual axis solar tracker with Arduino UNO REV3 using
+monitoring system as Arduino software. Generally, solar energy is the technology to
+get useful energy from sunlight. Solar energy has been used in many traditional
+technologies over the centuries and has been widely used in the absence of other
+energy supplies.
+Its usefulness is widespread when awareness of the cost of the environment and the
+supply is limited by other energy sources such as fuel. The solar tracking system is the
+most effective technology to improve the efficiency of solar panels by tracking and
+following the sun's movement. With the help of this system, solar panels can improve
+the way of sunlight detection so that more electricity can be collected as solar panels
+can maintain a sunny position.
+Thus, the project discusses the development of two-axis solar-tracking developers
+using Arduino Uno as main controller the system. For develops this project, four
+light- dependent resistors (LDRs) have been used for sunlight detection and a
+maximum light intensity. Two servo motors have been used to rotate the solar panel
+according to the sun's light source detected by the LDR. Next LN298 Motor controller
+device is used as an intermediary between device and Arduino monitoring software.TABLE OF CONTENTS
+Chapter Title Page no.
+- CERTIFICATE i
+- DECLARATION ii
+- ACKNOWLEDGMENT iii
+- ABSTRACT iv
+- TABLE OF CONTENTS v
+1 INTRODUCTION 1-4
+2 RESEARCH METHODOLOGY 5-7
+3 LITERATURE REVIEW 8-9
+4 SYSTEM DESIGN 10-11
+5 HARDWARE IMPLEMENTATION 12-18
+6 CIRCUIT DESIGN 19-23
+7 SOFTWARE TESTING 24-26
+8 CODE AND PROGRAMMING 27-29
+9 TESTING AND RESULTS 30-32
+- CONCLUSION 33
+- REFERANCES 34Page |
+1
+INTRODUCTION Chapter 1
+I am excited to present to you our Arduino-based dual-axis solar tracker project. In
+an era where renewable energy is becoming increasingly critical, optimizing the
+efficiency of solar panels is of paramount importance. Traditional fixed solar
+panels often miss out on significant amounts of sunlight as the sun moves acrossthe
+sky throughout the day. Our project addresses this challenge by ensuring that
+solar panels are always perfectly aligned with the sun, maximizing their energy
+output. This dual-axis solar tracker is designed to follow the sun's movement both
+horizontally and vertically. By integrating a combination of light sensors, servo
+motors, gear motors, and an L298N motor driver, all controlled by an Arduino
+microcontroller, we have created a system that can dynamically adjust the
+orientation of the solar panel to track the sun's position accurately.
+Our tracker uses four Light Dependent Resistors (LDRs) to detect sunlight
+intensity from different directions. These sensors feed real-time data to the
+Arduino, which processes the information to calculate the optimal positioning.The
+Arduino then adjusts the servo motors for fine movements and the gear motors for
+more substantial adjustments, ensuring the solar panel remains perpendicular to
+the sun's rays throughout the day.
+In this presentation, I will walk you through the components used, the working
+principle of our solar tracker, the construction and wiring process, and the software
+that powers the system. I will also demonstrate how the track operates in real-time,
+highlighting its ability to enhance solar panel efficiency.
+This limitation by dynamically adjusting the orientation of solar panels to
+continuously track the sun, ensuring optimal energy absorption Join me as we
+explore how this innovative solution can contribute to more efficient solar energy
+capture, paving the way for a more sustainable future. As we move towards a
+future dominated by renewable energy sources, optimizing the efficiency of
+solar panels becomes a critical objective. Fixed solar panels, while effective,
+miss out on maximizing energy capture due to the sun’s movement across the
+sky throughout the day. Our project aims to address.Page |
+2
+Background and Context: -Renewable energy sources, particularly solar
+energy, have gained significant attention in recent years due to the growing
+concern about climate change, energy security, and sustainability. Solar
+energy is an abundant and clean source of energy, but its efficiency and
+productivity are highly dependent on the orientation and angle of the solar
+panels. Traditional fixed-tilt solar panels are limited in their ability to capture
+the maximum amount of solar energy, resulting in reduced energy output and
+efficiency.
+Importance of Solar Tracking Systems: - Solar tracking systems have
+emerged as a crucial technology to optimize the energy output of solar panels.
+By tracking the sun's movement and adjusting the angle and orientation of the
+solar panels, solar tracking systems can increase energy output by up to 45%
+compared to fixed-tilt systems. This technology is particularly important for
+utility-scale solar power plants, where maximizing energy output is critical to
+ensuring economic viability. Moreover, solar tracking systems can also
+enhance the performance of rooftop solar installations, enabling homeowners
+and businesses to generate more electricity from their solar panels.
+Objective and Scope of the Project: -
+The objective of this project is to design and develop a dual-axis solar tracker
+using Arduino, a low-cost and open-source microcontroller platform. The
+scope of this project includes:- Designing and developing a dual-axis solar
+tracker system using Arduino and sensors- Implementing a tracking algorithm
+to optimize energy output- Testing and evaluating the performance of the solar
+tracker system- Comparing the performance of the dual-axis solar tracker with
+traditional fixed- tilt systems- Investigating the economic feasibility and
+potential applications of the solar tracker system This project aims to
+contribute to the development of efficient and cost-effective solar tracking
+systems, enabling wider adoption of solar energy technologies and promoting
+sustainable energy solutions. By leveraging the flexibility and customizability of
+Arduino, this project seeks to create a scalable and adaptable solar tracking
+solution for various applications, from small-scale rooftop installations to largescale solar power plants.Page |
+3
+Objective and Scope of the Project: -
+The objective of this project is to design and develop a dual-axis solar tracker
+using Arduino, a low-cost and open-source microcontroller platform. The
+scope of this project includes:- Designing and developing a dual-axis solar
+tracker system using Arduino and sensors- Implementing a tracking algorithm to
+optimize energy output- Testing and evaluating the performance of the solar
+tracker system- Comparing the performance of the dual-axis solar tracker with
+traditional fixed- tilt systems- Investigating the economic feasibility and
+potential applications of the solar tracker system This project aims to contribute
+to the development of efficient and cost-effective solar tracking systems,
+enabling wider adoption of solar energy technologies and promoting sustainable
+energy solutions. By leveraging the flexibility and customizability of Arduino,
+this project seeks to create a scalable and adaptable solar tracking solution for
+various applications, from small-scale rooftop installations to large-scale solar
+power plants.Page | 4
+Figure1.1 Light prototype (Fusion 360)
+Figure1.2 OrientationPage | 5
+RESEARCH METHODOLOGY Chapter 2
+Research Design: - Experimental design, where the solar tracking system is tested and
+compared to a fixed solar panel.
+Data Collection Methods: - Sensors and data loggers to collect data on solar irradiance,
+panel temperature, and energy output.
+Sampling Method- Continuous data collection was used to ensure accurate and reliable
+results. Data Analysis: - Statistical analysis was performed to compare the performance of
+the solar tracking system to the fixed solar panel. Performance metrics included energy
+output, efficiency, and temperature.
+Research Instruments: - Solar tracking system- Fixed solar panel- Sensors (LDRs) (solar
+irradiance, temperature, energy output)- Dataloggers
+Ethics: - The research was conducted in an environmentally responsible manner, with
+minimal impact on the surrounding environment. - All necessary safety precautions were
+taken to ensure the safety of researchers and equipment.
+The dual-axis solar tracker is a sophisticated system that adjusts the orientation of solar panels
+in real-time to maximize energy output. The process involves a combination of hardware and
+software components working together to track the sun's movement and optimize energy
+production.
+Step 1: Sunlight Detection
+The process begins with sunlight detection, where sensors installed on the solar panel
+detect the intensity and direction of sunlight. These sensors typically include photodiodes
+or phototransistors that convert sunlight into electrical signals.
+Step 2: Data Acquisition
+The electrical signals from the sensors are transmitted to the microcontroller, which
+acquires and processes the data. The microcontroller calculates the sun's position and
+velocity using algorithms and astronomical data.
+Step 3: Motor Control
+Based on the calculated sun position and velocity, the microcontroller sends control signals
+to the motors that adjust the solar panel's tilt and azimuth angles. The motors rotate the solar
+panel to face the sun directly, maximizing energy output.Page | 6
+Step 4: Tracking Algorithm
+The tracking algorithm is the brain of the dual-axis solar tracker, responsible for calculating
+the optimal orientation of the solar panel. The algorithm takes into account factors such as
+the sun's position, velocity, and altitude, as well as the solar panel's efficiency and
+temperature.
+Step 5: Real-Time Adjustment
+The dual-axis solar tracker continuously adjusts the solar panel's orientation in real-time to
+ensure maximum energy output. This involves making fine adjustments to the tilt and
+azimuth angles to compensate for changes in the sun's position and velocity.
+Step 6: Performance Monitoring
+The system monitors its performance in real-time, tracking energy output and adjusting the
+tracking algorithm as needed. This ensures that the solar panel operates at maximum
+efficiency throughout the day.
+Step 7: System Maintenance
+Regular system maintenance is crucial to ensure optimal performance. This includes
+cleaning the sensors and solar panels, checking motor performance, and updating software
+and firmware.Page | 7
+Figure 2.1 Reference chapter1
+Figure 2.2 Reference chapter1Page | 8
+Literature Review Chapter 3
+Project description
+This project presents a simple and low-cost solution to monitor and control a smart
+dual-axis solar tracker system for performance evaluation.
+Overview: - The project aims to design and build a solar tracking system that utilizes an
+Arduino Uno microcontroller to optimize energy absorption from the sun. The system will
+adjust the angle and orientation of a solar panel to align with the sun's movement,
+maximizing energy output.
+System Components:
+1. Arduino Uno Microcontroller: The brain of the system, responsible for
+processing sensor data and controlling the motors.
+2. Light Dependent Resistors (LDRs): Sensors that detect the intensity of light and
+help determine the direction of the sun.
+3. Servo Motors Used for fine adjustments in the panel's position, providing precise
+control and ensuring optimal alignment.
+4. Gear Motors: Used for larger, stronger movements to align the panel, providing
+the necessary torque to rotate the panel.
+5. L298N Motor Driver: Acts as an interface between the Arduino and gear motors,
+controlling the motor's direction and speed.
+6. Power Supply: Provides the necessary power for the Arduino, motors, and sensors.
+7. Solar Panel: The energy-generating component that benefits from the tracking
+system's optimization SystemPage | 9
+Operation:
+1. The LDRs detect the sun's intensity and direction, sending signals to the Arduino.
+2. The Arduino processes the data and calculates the optimal panel position.
+3. The Arduino sends signals to the servo motors and gear motors to adjust the panel's
+angle and orientation.
+4. The L298N motor driver controls the gear motors' movement.
+5. The system continuously monitors and adjusts the panel's position to ensure maximum
+6. energy absorption.
+Project Goals:
+1. Design and build a functional solar tracking system using Arduino Uno.
+2. Optimize energy absorption from the sun by aligning the solar panel with the
+sun's movement.
+3. Demonstrate the effectiveness of the solar tracking system in increasing energy output.
+Project Deliverables:
+1. A fully functional solar tracking system.
+2. A detailed report documenting the design, construction, and testing of the system.
+3. A presentation summarizing the project's goals, methodology, and results.Page | 10
+System Design Chapter 4
+The solar tracking system consists of the following subsystems:
+1. Sensing Subsystem: - Light Dependent Resistors (LDRs) to detect the sun's
+intensity and direction Temperature sensor to monitor panel temperature
+2. Control Subsystem: - Arduino Uno microcontroller to process sensor data
+and control motors -L298N motor driver to control gear motors
+3. Actuation Subsystem: - Servo motors for fine adjustments Gear motors for
+larger movements
+4. Power Subsystem: - Power supply to provide power to Arduino, motors, and
+sensors
+5. Solar Panel Subsystem: - Solar panel to generate energy System
+Architecture: -
+The system architecture is based on a hierarchical structure, with the Arduino Uno at the
+top level, controlling the motors and sensors. The LDRs and temperature sensor provide
+input to the Arduino, which processes the data and sends control signals to the motors.
+System Components Interface: -
+Arduino Uno: - Inputs: LDRs, temperature sensor
+Outputs: -Servo motors, gear motors
+L298N Motor Driver: - Inputs: Arduino
+Uno Outputs: Gear motors
+Servo Motors: - Inputs: Arduino
+Uno Outputs: Panel movement
+Gear Motors: - Inputs: L298N Motor Driver- Outputs: Panel movement System.
+Design Considerations: - Accuracy and precision of solar tracking- Efficiency and
+reliability of the system-Cost-effectiveness and feasibility of implementation- Scalability
+and flexibility for future upgrades.
+The proposed Arduino-based solar tracker system is depicted in Fig. It is a dual-axis
+solar tracker that can rotate automatically to track the sun's position using LDR sensors,Page | 11
+or manually by the user through the dashboard of an Arduino Software. The system
+starts with detects the sun position (intensity of light) by LDR sensors and sends the data
+to the controller (Arduino UNO 3 board). This latter then processes these data to
+command servomotors (SM1 and SM2) that hold the PV panel to rotate toward the sun.
+The values of the generated PV voltage and current, temperature and humidity are also
+sent to the Arduino through associated sensors.
+Next, the Ethernet shield, which is mounted with Arduino and allows it to be connected to
+the Internet, will send the data that have been taking and/or processed by Arduino to the
+cloud.
+Lastly, the solar tracker data, including LDR sensors, PV power, temperature and
+humidity, are displayed in real-time in the Arduino monitoring application via precreated widgets. The application is running directly from computer or smartphone using
+the code, it can visualize, in the dashboard of the application, all solar tracker data in their
+associated widgets.
+Figure 4.1 circuit connectionPage | 12
+Hardware Implementation Chapter 5
+The solar tracking system's hardware implementation involves connecting and integrating the
+various components to create a functional system. The following sections describe the hardware
+implementation in detail:
+Component Selection: -
+1. Arduino Uno microcontroller-
+2. LDRs (Light Dependent Resistors)-
+3. Temperature sensor
+4. Servo motors-
+5. Gear motors-
+6. L298N motor driver
+7. Power supply
+8. Solar panel
+9. MultimeterFigure 5.1 Thinker cad Circuit block diagramPage | 13
+Figure5.2 Arduino block diagram
+Website link: - https://store.arduino.cc/products/arduino-uno-rev3Page | 14
+Figure 5.3 L298N motor driver Figure5.4 L298N Motor driver block diagramPage | 15
+Pin Name Description
+IN1 & IN2 Motor A input pins. Used to
+control the spinning direction of
+Motor A
+IN3 & IN4 Motor B input pins. Used to
+control the spinning direction of
+Motor B
+ENA Enables PWM signal for Motor A
+ENB Enables PWM signal for Motor B
+OUT1 & OUT2 Output pins of Motor A
+OUT3 & OUT4 Output pins of Motor B
+12V 12V input from DC power Source
+5V Supplies power for the switching
+logic circuitry insideL298N IC
+GND Ground pin
+Figure 5.5 Semantics of L298N Motor Driver Module
+https://components101.com/modules/l293n-motor-driver-modulePage | 16
+Figure 5.6 Servo Motor
+Wire
+Number
+Wire Color Description
+1 Brown Ground wire connected to the ground of system
+2 Red Powers the motor typically +5Vis used
+3 Orange PWM signal is given in through this wire to drive the
+motor
+MG90S Servo Wiring Description
+• Operating Voltage:
+4.8V to 6V (Typical5V)
+•Stall Torque: 1.8 kg/cm (4.8V)
+•Max Stall Torque: 2.2 kg/cm (6V)
+•Operating speed is 0.1s/60° (4.8V)
+•Gear Type: Metal
+•Rotation: 0°-180°
+•Weight of motor: 13.4gm
+•Package includes gear horns and screw
+Figure 5.7 Semantics
+https://components101.com/modules/servo-motor-basics-pinout-datasheetPage | 17
+Figure 5.8 LDR Circuit block diagram
+• Can be used to sense Light
+• Easy to use on Breadboard or Perf Board
+• Easy to use with Microcontrollers or even with normal Digital/Analog IC
+• Small, cheap and easily available
+• Available in PG5, PG5-MP, PG12, PG12-MP, PG20 and PG20-MP series
+Figure 5.9 semantics made with thinker cad
+LDRPage | 18
+Prototype made with Thinkercad
+Semantics made with thinker cad
+Figure 5.10 prototype made with thinker cad
+Semantics link: - https://www.tinkercad.com/things/fNQ4gCX5PfS-rajkumar-solar-projectPage | 19
+Circuit Design Chapter 6
+The Arduino Uno is connected to the LDRs, temperature sensor, and servo motors. The L298N
+motor driver is connected to the Arduino Uno and gear motors. The power supply is connected to the
+Arduino Uno, motors, and sensors.
+The circuit diagram consists of the following connections: -
+LDRs Setup:
+- Connect one terminal of each LDR to 5V on the Arduino.
+- Connect the other terminal of each LDR to an analog pin on the Arduino (A0, A1, A2, A3).
+- Place a 10kΩ resistor between each LDR and (GND) ground.
+Motor Driver Setup:
+ The IN1, IN2, IN3, and IN4 pins of the L298N connected to digital pins on the Arduino
+(e.g., 8, 9, 10, 11).
+ The ENA and ENB pins of the L298N connected to 5V.
+ The motor output pins of the L298N connected to the stepper motors.
+ The gear motor connected to the other motor output pins of the L298N.
+Power Supply:
+ 12 VOLT power supply to the motors.
+ The Arduino is powered via USB or an external power source.
+Figure 6.1 circuit diagramPage | 20
+Wiring and Connections: -
+ The LDRs are connected to analog input pins on the Arduino Uno.
+ The temperature sensor is connected to an analog input pin on the Arduino Uno.
+ The servo motors are connected to digital output pins on the Arduino Uno.
+ The gear motors are connected to the L298N motor driver.
+ The L298N motor driver is connected to digital output pins on the Arduino Uno.
+Figure 6.2 Wiring connections with gear motor
+Figure 6.3 Block diagram of Tracking SystemPage | 21
+Component chart
+Figure 6.4 Component Chart and Semitics
+Source Semantics: - https://www.tinkercad.com/things/fNQ4gCX5PfS-rajkumar-solarprojectPage | 22
+Components used
+Fig. 6.5 Breadboard Fig. 6.6 Solar
+Fig.6.7 Battery 12v Fig.6.8 Motor Driver L298N
+Fig.6.9 Servo Motor Fig.6.10 LDR`sPage | 23
+Fig.6.11 Gear Motor Fig. 6.12 Arduino Uno REV3
+Fig.6.13 Jumper Wire Fig.6.14 Hinge SupportPage | 24
+Software Testing Chapter 7
+Arduino Software testing: -
+Fig. 7.1 Arduino Software testing Prototype
+Live image of software testing, simulating, debugging, running, development of
+dual axis solar tracker device.
+Live Testing of Arduino Uno software involves verifying that the code functions
+as expected and meets the requirements of the project.Page | 25
+Steps to test Arduino Uno software: -
+1. Verify Code Syntax: - Check for any syntax errors in the code.
+2. Simulate Code: Use a simulator like Proteus or Tinker cad to test the code in a
+virtual environment.
+3. Upload and Run: Upload the code to the Arduino Uno board and run it.
+4. Monitor Serial Output: Use the Serial Monitor tool to view
+outputmessages and debug information.
+5. Test Individual Functions: Test each function or module
+separately toensure they work correctly.
+6. Test Edge Cases: Test the code with unexpected inputs
+orscenarios to ensure it handles them correctly.
+7. Compare Expected vs. Actual Results: Verify that the actual results match the expected results.
+8. Debugging: Use debugging techniques like print statements
+or a debugger to identify and fix issues
+9. Test with Different Inputs: Test the code with various
+inputsto ensure it works correctly in different scenarios.
+10. Refine and Iterate: Refine the code based on test results and
+iterate until the desired functionality is achieved.Page | 26
+Testing tools for Arduino Uno include: -
+Fig.7.2-Arduino IDE's built- in Serial Monitor Fig7.3-Proteus Simulator-Tinker card
+simulator
+Fig.7.4 Arduino Debugger- Unit testing libraries like Arduino UnitPage | 27
+CODE AND PROGRAMMING Chapter 8
+#include <Servo>
+Servo servoX;
+Servo servoY;
+const int motor1Pin1 = 5;
+const int motor1Pin2 = 6; const int
+motor2Pin1 = 7; const int motor2Pin2 = 8;
+int errorX = x1 - x2;
+int errorY = y1 - y2;
+if (abs(errorX) > 50) { if (errorX >
+0) { servoX.write(servoX.read() +
+1);
+} else {
+servoX.write(servoX.read() -
+1);
+}
+}
+if(abs(errorY)>50){
+if (errorY > 0) {
+servoY.write(servoY.read() + 1);
+}
+else {servoY.write(servoY.read() 1);
+}
+}
+// Gear motor control for stronger movements
+if (abs(errorX) > 200) {
+if (errorX > 0) {
+digitalWrite(motor1Pin1,HIGH);
+digitalWrite(motor1Pin2,LOW);
+}
+else {
+digitalWrite(motor1Pin1,LOW);
+digitalWrite(motor1Pin2, HIGH);
+}Page | 28
+} else {
+digital Write(motor1Pin1, LOW
+int errorX = x1 - x2; int errorY = y1 - y2;
+if (abs(errorX) > 50) { if (errorX>0) {
+servoX.write(servoX.read() + 1);
+} else {
+servoX.write(servoX.read() -
+1);
+}
+}
+if (abs(errorY) > 50)
+{ if (errorY > 0) {
+servoY.write(servoY.read() + 1);
+} else {
+servoY.write(servoY.read() -
+1);
+}
+int errorX = x1 - x2;
+int errorY = y1 -
+y2;
+if (abs(errorX) > 50) { if (errorX > 0) {
+servoX.write(servoX.read() + 1);
+} else { servoX.write(servoX.read() -
+1);
+}
+}
+if (abs(errorY) > 50)
+{ if (errorY > 0) {
+servoY.write(servoY.read() + 1);
+} else {Page | 29
+servoY.write(servoY.read() -
+1);
+}
+// Gear motor control for stronger movements if
+(abs(errorX) > 200) { if (errorX > 0) {
+digitalWrite(motor1Pin1, HIGH);
+digitalWrite(motor1Pin2, LOW);
+} else {
+digitalWrite(motor1Pin1, LOW);
+digitalWrite(motor1Pin2, HIGH);
+}
+} else {
+digitalWrite(motor1Pin1, LOW);
+digitalWrite(motor1Pin2, LOW);
+}
+if (abs(errorY) > 200)
+{
+if (errorY > 0) {
+digitalWrite(motor2Pin1, HIGH);
+digitalWrite(motor2Pin2, LOW);
+} else {
+digitalWrite(motor2Pin1, LOW);
+digitalWrite(motor2Pin2, HIGH);
+}
+} else {
+digitalWrite(motor2Pin1, LOW);
+digitalWrite(motor2Pin2, LOW);
+}
+delay(100);
+}
+End of codingPage | 30
+TESTING AND RESULTS Chapter 9
+PROTOTYPE
+Fig.9.1 Prototype Horizontal Axis
+Fig. 9.2 Prototype Vertical AxisPage | 31
+Fig.9.3- 3D View of prototype @thinkercad, Fusion 360 softwarePage | 32
+Project Result
+Fig.9.4 Project ImagePage | 33
+CONCLUSION
+As a conclusion, the dual axis solar tracker has been developed successfully.
+Conclusion: The solar tracking system using Arduino Uno is an innovative solution to
+optimize energy absorption from the sun. The system utilizes light dependent resistors
+(LDRs) to detect the sun's intensity and direction, and adjusts the solar panel's angle and
+orientation accordingly.
+The Arduino Uno microcontroller processes the sensor data and controls the motors to
+achieve precise tracking. The system's hardware implementation involves connecting the
+LDRs, motors, and motor driver to the Arduino Uno board. The software implementation
+involves writing code to read sensor data, calculate the optimal panel position, and control the
+motors. Testing of the system involved verifying code syntax, simulating code, uploading and
+running the code, monitoring serial output, testing individual functions, testing edge cases,
+comparing expected vs. actual results, debugging, testing with different inputs, and refining
+and iterating the code.
+The solar tracking system has several benefits, including:- Increased energy absorptionImproved efficiency- Reduced energy costs- Environmentally friendly- Cost- effective The
+system has potential applications in:- Solar power generation- Space exploration- AgricultureRobotics Future enhancements to the system could include:- Using more advanced sensorsImplementing machine learning algorithms- Integrating with other renewable energy sourcesDeveloping a more robust and durable design In conclusion, the solar tracking system using
+Arduino Uno is a successful project that demonstrates the potential of using microcontrollers
+and sensors to optimize energy absorption from the sun. The system has numerous benefits
+and applications, and future enhancements could further improve its performance and
+functionality.
+The project's success can be attributed to the careful planning, design, and testing of the
+system. The use of Arduino Uno and LDRs proved to be an effective combination for
+achieving precise solar tracking. The system's flexibility and adaptability make it suitable for
+various applications, from small- scale solar power generation to large-scale industrial use.
+The project's limitations include the use of a simple motor driver and the potential for
+improved sensor accuracy. However, these limitations can be addressed in future
+enhancements to the system. In summary, the solar tracking system using Arduino Uno is an
+innovative and effective solution for optimizing energy absorption from the sun. Its potential
+applications and benefits make it a valuable project for further development and
+implementation.Page | 3
