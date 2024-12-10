@@ -1,8 +1,11 @@
 # Dual Axis Solar Tracking System
-https://www.linkedin.com/posts/rajkumar-sinha-6b379620b_arduino-tracker-solar-activity-7272226853749215232-Rh46?utm_source=share&utm_medium=member_android
+
+vedio link 🖇️ https://www.linkedin.com/posts/rajkumar-sinha-6b379620b_arduino-tracker-solar-activity-7272226853749215232-Rh46?utm_source=share&utm_medium=member_android
 
 ## Project Overview
 This college project implements a dual-axis solar tracking system designed to maximize solar panel energy efficiency by continuously orienting solar panels towards the optimal sun position.
+
+![Alt Text](https://images.app.goo.gl/dEBk3zDr32sTZn7W9)
 
 ## Table of Contents
 - [Features](#features)
