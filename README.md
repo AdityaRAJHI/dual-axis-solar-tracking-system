@@ -5,8 +5,12 @@ vedio link 🖇️ https://www.linkedin.com/posts/rajkumar-sinha-6b379620b_ardui
 ## Project Overview
 This college project implements a dual-axis solar tracking system designed to maximize solar panel energy efficiency by continuously orienting solar panels towards the optimal sun position.
 
-![Project Logo](https://images.app.goo.gl/dEBk3zDr32sTZn7W9)
+```![Project Logo](https://images.app.goo.gl/dEBk3zDr32sTZn7W9)
 ```
+
+
+
+
 
 ## Table of Contents
 - [Features](#features)
