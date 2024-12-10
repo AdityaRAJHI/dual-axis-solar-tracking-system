@@ -12,6 +12,17 @@ This college project implements a dual-axis solar tracking system designed to ma
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ## Table of Contents
 - [Features](#features)
 - [Components](#components)
